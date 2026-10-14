@@ -1,0 +1,260 @@
+/* Selector universal y reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e8f9f7 0%, #fff8e7 50%, #ffe4e6 100%);
+  min-height: 100vh;
+  color: #1a1a1a;
+}
+
+/* Cabecera navegación */
+.navegacion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: linear-gradient(90deg, #ffe600 0%, #ff007f 100%);
+  border-top: 2.5px solid black;
+  border-bottom: 2.5px solid black;
+}
+
+.nav-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.btn-login {
+  background-color: #ffffff;
+  border: 2px solid #000;
+  border-radius: 20px;
+  padding: 6px 20px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+}
+
+/* Layout Principal */
+.main-container {
+  display: flex;
+  padding: 30px 40px;
+  gap: 40px;
+}
+
+.feed-section {
+  flex: 1;
+}
+
+.form-section {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+/* Banner de Bienvenida */
+.banner_bienvenida {
+  background: linear-gradient(90deg, #ffe600 20%, #ff007f 100%);
+  border-radius: 20px;
+  padding: 20px 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  border: 3px solid #1a1a1a;
+}
+
+.banner_bienvenida h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.banner_bienvenida p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Grid anuncios */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjetas anuncios */
+.card {
+  position: relative;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0px #1a1a1a;
+  min-height: 220px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  padding-right: 20px;
+}
+
+.card-body {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+}
+
+.author-info {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.author-info small {
+  font-size: 10px;
+  color: #444;
+  font-weight: 400;
+}
+
+/* Colores de tarjetas */
+.card-amarillo { background-color: #ffe600; }
+.card-naranja  { background-color: #fa902d; }
+.card-rosa     { background-color: #ff8bbd; }
+.card-morado   { background-color: rgb(255, 48, 255); }
+
+/* Formulario */
+.form-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 30px;
+  border: 2px solid black;
+}
+
+.form-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container input,
+.input-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 2px solid #ff007f;
+  outline: none;
+  font-size: 14px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #ff007f 0%, #ff7b00 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 0, 127, 0.3);
+  transition: transform 0.2s;
+}
+
+.btn-submit:hover {
+  transform: scale(1.02);
+}
+
+/* Adaptación para dispositivos móviles */
+@media (max-width: 900px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .form-section {
+    width: 100%;
+  }
+}
+
+    .contenedor-admin {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .caja-login {
+      max-width: 420px;
+      margin: 50px auto;
+    }
+    .btn-eliminar {
+      background: linear-gradient(90deg, #ff0055 0%, #d32f2f 100%);
+      color: #ffffff;
+      border: 2px solid black;
+      border-radius: 12px;
+      padding: 8px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .btn-eliminar:hover {
+      transform: scale(1.02);
+    }
+    .alerta-error {
+      background-color: #ffe4e6;
+      border: 2px solid #ff007f;
+      color: #990033;
+      padding: 10px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+    }
