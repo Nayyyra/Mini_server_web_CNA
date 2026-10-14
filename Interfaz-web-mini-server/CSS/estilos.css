@@ -15,8 +15,7 @@ body {
 /* Cabecera navegación */
 .navegacion {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 15px 40px;
   background: linear-gradient(90deg, #ffe600 0%, #ff007f 100%);
   border-top: 2.5px solid black;
@@ -24,21 +23,8 @@ body {
 }
 
 .nav-title {
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #1a1a1a;
-  font-weight: 700;
-  font-size: 15px;
+  font-size: 30px;
+  font-weight: 800;
 }
 
 .btn-login {
@@ -83,10 +69,11 @@ body {
 
 .banner_bienvenida h2 {
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .banner_bienvenida p {
+  margin-top: 10px;
   font-size: 14px;
   font-weight: 600;
 }
