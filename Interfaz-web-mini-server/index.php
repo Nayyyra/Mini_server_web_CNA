@@ -3,7 +3,21 @@ require "php/conexion.php";
 require "php/funcionesBD.php";
 
 crearTodo($db);
-
+    if (isset($_POST['enviar'])) {
+      crearAnuncio($db);
+      header("Location: index.php");
+      exit();
+    }
+    if (isset($_POST['eliminar'])) {
+      eliminarAnuncio($db);
+      header("Location: index.php");
+      exit();
+    } 
+    if (isset($_POST['actualizar'])) {
+      modificarAnuncio($db);
+      header("Location: index.php");
+      exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +29,6 @@ crearTodo($db);
   <link rel="stylesheet" href="CSS/estilos.css">
 </head>
 <body>
-    <?php 
-    if (isset($_POST['enviar'])) {
-      crearAnuncio($db);
-      header("Location: index.php");
-      exit();
-    }
-    if (isset($_POST['id'])) {
-      eliminarAnuncio($db);
-      header("Location: index.php");
-      exit();
-    } 
-    ?>
 
   <!-- Encabezado superior -->
   <header class="navegacion">
@@ -53,9 +55,10 @@ crearTodo($db);
     <!-- Formulario para publicar anuncios -->
     <aside class="form-section">
       <div class="form-card">
-        <h2 class="form-title">Publicar nuevo anuncio</h2>
+        <h2 class="form-title" id="tituloFormulario">Publicar nuevo anuncio</h2>
         
         <form action="index.php" method="POST">
+          <input type="hidden" name="id" value="id" id="idAnuncio">
           <div class="form-group">
             <label for="titulo">Título</label>
             <div class="input-container">
@@ -84,7 +87,7 @@ crearTodo($db);
             </div>
           </div>
 
-          <button type="submit" class="btn-submit" name="enviar">Publicar</button>
+          <button type="submit" class="btn-submit" name="enviar" id="enviar">Publicar</button>
         </form>
       </div>
     </aside>

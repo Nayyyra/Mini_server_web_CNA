@@ -28,9 +28,9 @@
                         <small><?php echo $anuncio['fecha']?></small>
                     </span>
                 <form action="index.php" class="form-group" method="POST">
-                    <button type="submit" class="eliminate-button" name="id" value="<?php echo $anuncio['id']?>">Eliminar Anuncio</button>
+                    <button id="eliminate-Button" type="submit" class="eliminate-button" name="eliminar" value="<?php echo $anuncio['id']?>">Eliminar Anuncio</button>
                 </form>
-
+                <button class="edit-button" data-id="<?php echo $anuncio['id']?>" data-titulo="<?php echo $anuncio['titulo']?>" data-autor="<?php echo $anuncio['autor']?>" data-descripcion="<?php echo $anuncio['descripcion']?>" data-contenido="<?php echo $anuncio['contenido']?>">Editar Anuncio</button>
                 </div>
             </article>
         <?php
@@ -53,11 +53,26 @@
     }
 
     function eliminarAnuncio($db){
-        $id=$_POST['id'];
+        $id=$_POST['eliminar'];
         $sentencia= $db->prepare("DELETE FROM anuncios WHERE id = :id");
         $sentencia->bindValue(':id', $id, SQLITE3_INTEGER);
         $sentencia->execute();
     }
 
-
+    function modificarAnuncio($db){
+        $titulo=$_POST['titulo'];
+        $id=$_POST['id'];
+        $descripcion=$_POST['descripcion'];
+        $autor=$_POST['autor'];
+        $contenido=$_POST['contenido'];
+        $fecha = date('Y-m-d H:i:s');
+        $sentencia= $db->prepare("UPDATE anuncios SET titulo= :titulo, descripcion= :descripcion, autor=:autor, contenido=:contenido, fecha=:fecha WHERE id= :id");
+        $sentencia->bindValue(':id', $id, SQLITE3_INTEGER);
+        $sentencia->bindValue(':titulo', $titulo, SQLITE3_TEXT);  
+        $sentencia->bindValue(':descripcion', $descripcion, SQLITE3_TEXT);
+        $sentencia->bindValue(':autor', $autor, SQLITE3_TEXT); 
+        $sentencia->bindValue(':contenido', $contenido, SQLITE3_TEXT);
+        $sentencia->bindValue(':fecha', $fecha, SQLITE3_TEXT); 
+        $sentencia->execute();  
+    }
 ?> 

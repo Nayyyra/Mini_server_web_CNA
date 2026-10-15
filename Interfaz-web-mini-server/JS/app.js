@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 })
 
-const botones = document.querySelectorAll(".eliminate-button");
+const botonesEliminar = document.querySelectorAll(".eliminate-button");
 
-botones.forEach((boton) => {
+botonesEliminar.forEach((boton) => {
   boton.addEventListener("click", (evento) => {
     let nombre = prompt("Introduce la clave para eliminar el anuncio");
 
@@ -27,5 +27,20 @@ botones.forEach((boton) => {
       evento.preventDefault();
       return;
     }
+  });
+});
+
+const botonesEditar = document.querySelectorAll(".edit-button");
+
+botonesEditar.forEach((boton) => {
+  boton.addEventListener("click", (evento) => {
+    document.getElementById("tituloFormulario").textContent = "Editar anuncio";
+    document.getElementById("titulo").value = boton.dataset.titulo;
+    document.getElementById("autor").value = boton.dataset.autor;
+    document.getElementById("descripcion").value = boton.dataset.descripcion;
+    document.getElementById("contenido").value = boton.dataset.contenido;
+    document.getElementById("idAnuncio").value = boton.dataset.id;
+    document.getElementById("enviar").setAttribute('name', 'actualizar');
+    document.getElementById("enviar").textContent = "Editar";
   });
 });
