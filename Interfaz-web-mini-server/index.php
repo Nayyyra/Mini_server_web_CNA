@@ -4,7 +4,6 @@ require "php/funcionesBD.php";
 
 crearTodo($db);
 
-
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +20,13 @@ crearTodo($db);
       crearAnuncio($db);
       header("Location: index.php");
       exit();
-      } ?>
+    }
+    if (isset($_POST['id'])) {
+      eliminarAnuncio($db);
+      header("Location: index.php");
+      exit();
+    } 
+    ?>
 
   <!-- Encabezado superior -->
   <header class="navegacion">

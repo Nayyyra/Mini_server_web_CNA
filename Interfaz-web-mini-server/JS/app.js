@@ -13,6 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault();
       return;
     }
+  })
+})
 
+const botones = document.querySelectorAll(".eliminate-button");
+
+botones.forEach((boton) => {
+  boton.addEventListener("click", (evento) => {
+    let nombre = prompt("Introduce la clave para eliminar el anuncio");
+
+    if(nombre!=="7367"){
+      alert("Incorrecto. No se eliminara el anuncio")
+      evento.preventDefault();
+      return;
+    }
   });
-
+});

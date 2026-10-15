@@ -1,27 +1,6 @@
 <?php
     function crearTodo($db){
         $db->exec('CREATE TABLE IF NOT EXISTS anuncios (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL UNIQUE, descripcion TEXT NOT NULL, autor TEXT NOT NULL, contenido TEXT NOT NULL, fecha TEXT NOT NULL)');
-        $db->exec("INSERT OR IGNORE INTO anuncios (titulo, descripcion, autor, contenido,fecha) VALUES ('Alhambra', 'prueba','Autor','ContenidoPrueba','2026-10-14 18:58:00')");
-        $db->exec("
-        INSERT OR IGNORE INTO anuncios (titulo, descripcion, autor, contenido,fecha)
-        VALUES (
-            'Venta de bicicleta',
-            'Bicicleta de montaña en buen estado',
-            'Carlos',
-            'Se vende bicicleta de montaña de 29 pulgadas, revisada recientemente.',
-            '2026-10-14 18:58:00'
-            )
-        "); 
-        $db->exec("
-        INSERT OR IGNORE INTO anuncios (titulo, descripcion, autor, contenido,fecha)
-        VALUES (
-            'Clases particulares',
-            'Clases de programación y bases de datos',
-            'Laura',
-            'Se ofrecen clases de PHP, SQL y desarrollo web para estudiantes.',
-            '2026-10-14 18:58:00'
-            )
-        ");
     }
 
     function mostrarAnuncios($db){
@@ -48,6 +27,9 @@
                         <br>
                         <small><?php echo $anuncio['fecha']?></small>
                     </span>
+                <form action="index.php" class="form-group" method="POST">
+                    <button type="submit" class="eliminate-button" name="id" value="<?php echo $anuncio['id']?>">Eliminar Anuncio</button>
+                </form>
 
                 </div>
             </article>
@@ -68,6 +50,13 @@
         $sentencia->bindValue(':contenido', $contenido, SQLITE3_TEXT);
         $sentencia->bindValue(':fecha', $fecha, SQLITE3_TEXT); 
         $sentencia->execute();  
+    }
+
+    function eliminarAnuncio($db){
+        $id=$_POST['id'];
+        $sentencia= $db->prepare("DELETE FROM anuncios WHERE id = :id");
+        $sentencia->bindValue(':id', $id, SQLITE3_INTEGER);
+        $sentencia->execute();
     }
 
 
