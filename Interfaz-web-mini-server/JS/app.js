@@ -113,7 +113,7 @@ if (cajaAviso) {
   setTimeout(cerrarAviso, 4000);
 }
 
-const botonesEliminar = document.querySelectorAll(".eliminate-button");
+const botonesEliminar = document.querySelectorAll(".btn-eliminar");
 
 botonesEliminar.forEach((boton) => {
   boton.addEventListener("click", (evento) => {
