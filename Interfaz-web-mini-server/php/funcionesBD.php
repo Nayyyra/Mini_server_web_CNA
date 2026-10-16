@@ -27,8 +27,10 @@
                         <br>
                         <small><?php echo $anuncio['fecha']?></small>
                     </span>
+<!--metemos input type = "hidden" para meter ahí el pin y el id del anuncio a borrar para enviarlo a través de un POST-->
                 <form action="index.php" class="form-group" method="POST">
-                    <button id="eliminate-Button" type="submit" class="eliminate-button" name="eliminar" value="<?php echo $anuncio['id']?>">Eliminar Anuncio</button>
+                    <input type="hidden" name="pin" class="input-pin">
+                    <button type="submit" class="eliminate-button" name="eliminar" value="<?php echo $anuncio['id']?>">Eliminar Anuncio</button>
                 </form>
                 <button class="edit-button" data-id="<?php echo $anuncio['id']?>" data-titulo="<?php echo $anuncio['titulo']?>" data-autor="<?php echo $anuncio['autor']?>" data-descripcion="<?php echo $anuncio['descripcion']?>" data-contenido="<?php echo $anuncio['contenido']?>">Editar Anuncio</button>
                 </div>
@@ -53,11 +55,23 @@
     }
 
     function eliminarAnuncio($db){
-        $id=$_POST['eliminar'];
-        $sentencia= $db->prepare("DELETE FROM anuncios WHERE id = :id");
-        $sentencia->bindValue(':id', $id, SQLITE3_INTEGER);
-        $sentencia->execute();
+    $clave = '7367';
+
+    // Recogemos el PIN que envió JavaScript en el formulario oculto
+    $pinIntroducido = isset($_POST['pin']) ? trim($_POST['pin']) : '';
+
+    // Si el pin no es igual a la clave, frenamos y no borramos nada
+    if ($pinIntroducido !== $clave) {
+        return;
     }
+
+    $id = $_POST['eliminar'];
+    $sentencia = $db->prepare("DELETE FROM anuncios WHERE id = :id");
+    $sentencia->bindValue(':id', $id, SQLITE3_INTEGER);
+    $sentencia->execute();
+
+    return true; //true == el borrado se ha efectuado
+}
 
     function modificarAnuncio($db){
         $titulo=$_POST['titulo'];

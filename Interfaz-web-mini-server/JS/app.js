@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const formulario = document.querySelector('.form-card form');
+
   const inputTitulo = document.getElementById('titulo');
   const inputAutor = document.getElementById('autor');
   const inputDescripcion = document.getElementById('descripcion');
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const inputTitulo = document.getElementById('titulo');
     const valorTitulo = inputTitulo.value.trim();
+
     if (valorTitulo === '') {
       mostrarError(inputTitulo, 'El título es obligatorio.');
       formularioValido = false;
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const inputAutor = document.getElementById('autor');
     const valorAutor = inputAutor.value.trim();
+
     if (valorAutor === '') {
       mostrarError(inputAutor, 'El autor es obligatorio.');
       formularioValido = false;
@@ -59,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const inputDescripcion = document.getElementById('descripcion');
     const valorDescripcion = inputDescripcion.value.trim();
+
     if (valorDescripcion === '') {
       mostrarError(inputDescripcion, 'La descripción es obligatoria.');
       formularioValido = false;
@@ -72,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const inputContenido = document.getElementById('contenido');
     const valorContenido = inputContenido.value.trim();
+
     if (valorContenido === '') {
       mostrarError(inputContenido, 'El contenido es obligatorio.');
       formularioValido = false;
@@ -89,17 +94,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+  // Anuncio borrado o no
+const cajaAviso = document.getElementById('caja-aviso');
+const btnCerrarAviso = document.getElementById('btn-cerrar-aviso');
+
+if (cajaAviso) {
+  // Quitar la ventanita
+  const cerrarAviso = () => {
+    cajaAviso.remove();
+  };
+
+  // Cerrar al pulsar aceptar
+  if (btnCerrarAviso) {
+    btnCerrarAviso.addEventListener('click', cerrarAviso);
+  }
+
+  //sino cerrar tras 4s
+  setTimeout(cerrarAviso, 4000);
+}
+
 const botonesEliminar = document.querySelectorAll(".eliminate-button");
 
 botonesEliminar.forEach((boton) => {
   boton.addEventListener("click", (evento) => {
-    let nombre = prompt("Introduce la clave para eliminar el anuncio");
+    const pinIntroducido = prompt("Introduce la clave para eliminar el anuncio:");
 
-    if(nombre!=="7367"){
-      alert("Incorrecto. No se eliminara el anuncio")
+    // Si cancela o lo deja en blanco, frenamos el envío
+    if (pinIntroducido === null || pinIntroducido.trim() === "") {
       evento.preventDefault();
       return;
     }
+
+    const formulario = boton.closest("form");
+    const inputPin = formulario.querySelector(".input-pin");
+
+    // Metemos lo que ha tecleado el usuario dentro del input hidden  
+    inputPin.value = pinIntroducido.trim();
   });
 });
 

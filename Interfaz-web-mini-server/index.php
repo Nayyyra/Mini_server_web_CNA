@@ -3,16 +3,25 @@ require "php/conexion.php";
 require "php/funcionesBD.php";
 
 crearTodo($db);
+  // Crear
     if (isset($_POST['enviar'])) {
       crearAnuncio($db);
       header("Location: index.php");
       exit();
     }
+
+  // Borrar
     if (isset($_POST['eliminar'])) {
-      eliminarAnuncio($db);
-      header("Location: index.php");
+      $borradoCorrecto = eliminarAnuncio($db);
+      if ($borradoCorrecto) {
+        header("Location: index.php?status=borrado_ok");
+      } else {
+        header("Location: index.php?status=pin_incorrecto");
+      }
       exit();
-    } 
+    }
+
+    // Editar
     if (isset($_POST['actualizar'])) {
       modificarAnuncio($db);
       header("Location: index.php");
@@ -46,6 +55,29 @@ crearTodo($db);
         <p>Comparte y descubre novedades del centro</p>
       </div>
 
+      
+  <!--Anuncio borrado / error-->
+  <?php if (isset($_GET['status'])): ?>
+    <div id="caja-aviso" class="caja-aviso">
+      <div class="cuerpo-aviso">
+        <span class="icono-aviso">
+          <?php echo $_GET['status'] === 'borrado_ok' ? '' : '⚠️'; ?>
+        </span>
+        <p class="texto-aviso">
+          <?php 
+            echo $_GET['status'] === 'borrado_ok' 
+              ? 'Anuncio eliminado correctamente.' 
+              : 'Pin incorrecto. No se pudo eliminar el anuncio.'; 
+          ?>
+        </p>
+      </div>
+
+      <div class="pie-aviso">
+        <button id="btn-cerrar-aviso" class="btn-cerrar-aviso" type="button">Aceptar</button>
+      </div>
+      </div>
+  <?php endif; ?>
+
       <!-- Feed anuncios -->
       <div class="cards-grid">
         <?php mostrarAnuncios($db); ?>
@@ -59,7 +91,7 @@ crearTodo($db);
         
         <form action="index.php" method="POST">
           <input type="hidden" name="id" value="id" id="idAnuncio">
-          
+
           <div class="form-group">
             <label for="titulo">Título</label>
             <div class="input-container">
