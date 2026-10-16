@@ -210,3 +210,16 @@ body {
     width: 100%;
   }
 }
+
+.input-error {
+  border-color: #ff0055;
+  background-color: #fff0f5;
+}
+
+.error-mensaje {
+  color: #ff0055;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  display: block;
+}

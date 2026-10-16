@@ -59,6 +59,7 @@ crearTodo($db);
         
         <form action="index.php" method="POST">
           <input type="hidden" name="id" value="id" id="idAnuncio">
+          
           <div class="form-group">
             <label for="titulo">Título</label>
             <div class="input-container">
