@@ -2,6 +2,11 @@
 require "php/conexion.php"; 
 require "php/funcionesBD.php";
 
+// Evitar que el navegador guarde la página en caché de historial
+header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
+header("Pragma: no-cache"); // HTTP 1.0
+header("Expires: 0");
+
 crearTodo($db);
   // Crear
     if (isset($_POST['enviar'])) {

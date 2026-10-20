@@ -99,6 +99,11 @@ const cajaAviso = document.getElementById('caja-aviso');
 const btnCerrarAviso = document.getElementById('btn-cerrar-aviso');
 
 if (cajaAviso) {
+  // Limpiamos el ?status= de la URL
+  if (window.history.replaceState) {
+    window.history.replaceState(null, '', window.location.pathname);
+  }
+
   // Quitar la ventanita
   const cerrarAviso = () => {
     cajaAviso.remove();
@@ -174,3 +179,10 @@ function limpiarError(input) {
     errorPrevio.remove();
   }
 }
+
+// Si volvemos atrás, recargar desde el servidor
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    window.location.reload();
+  }
+});
