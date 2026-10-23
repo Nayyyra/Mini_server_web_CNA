@@ -1,0 +1,319 @@
+/* Selector universal y reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e8f9f7 0%, #fff8e7 50%, #ffe4e6 100%);
+  min-height: 100vh;
+  color: #1a1a1a;
+}
+
+/* Cabecera navegación */
+.navegacion {
+  display: flex;
+  justify-content: center;
+  padding: 15px 40px;
+  background: linear-gradient(90deg, #ffe600 0%, #ff007f 100%);
+  border-top: 2.5px solid black;
+  border-bottom: 2.5px solid black;
+}
+
+.nav-title {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.btn-login {
+  background-color: #ffffff;
+  border: 2px solid #000;
+  border-radius: 20px;
+  padding: 6px 20px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+}
+
+/* Layout Principal */
+.main-container {
+  display: flex;
+  padding: 30px 40px;
+  gap: 40px;
+}
+
+.feed-section {
+  flex: 1;
+}
+
+.form-section {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+/* Banner de Bienvenida */
+.banner_bienvenida {
+  background: linear-gradient(90deg, #ffe600 20%, #ff007f 100%);
+  border-radius: 20px;
+  padding: 20px 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  border: 3px solid #1a1a1a;
+}
+
+.banner_bienvenida h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.banner_bienvenida p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Grid anuncios */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjetas anuncios */
+.card {
+  position: relative;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0px #1a1a1a;
+  min-height: 220px;
+  transition: transform 0.2s;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  padding-right: 20px;
+}
+
+.card-body {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+  margin-top: 15px;
+}
+
+/* Contenedor de botones alineados */
+.card-acciones {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.card-acciones form {
+  margin: 0;
+  display: inline;
+}
+
+/* Estilo retro consistente con el proyecto */
+.btn-card {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1.5px solid #1a1a1a;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.btn-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2.5px 2.5px 0px #1a1a1a;
+}
+
+
+/* Colores sutiles para distinguir acciones */
+.btn-editar:hover {
+  background-color: #e0f2fe;
+}
+
+.btn-eliminar:hover {
+  background-color: #fee2e2;
+}
+
+.author-info {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.author-info small {
+  font-size: 10px;
+  color: #444;
+  font-weight: 400;
+}
+
+/* Colores de tarjetas */
+.card-amarillo { background-color: #ffe600; }
+.card-naranja  { background-color: #fa902d; }
+.card-rosa     { background-color: #ff8bbd; }
+.card-morado   { background-color: rgb(255, 48, 255); }
+
+/* Formulario */
+.form-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 30px;
+  border: 2px solid black;
+}
+
+.form-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container input,
+.input-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 2px solid #ff007f;
+  outline: none;
+  font-size: 14px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #ff007f 0%, #ff7b00 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 0, 127, 0.3);
+  transition: transform 0.2s;
+}
+
+.btn-submit:hover {
+  transform: scale(1.02);
+}
+
+
+.input-error {
+  border-color: #ff0055;
+  background-color: #fff0f5;
+}
+
+.error-mensaje {
+  color: #ff0055;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Ventana de aviso  */
+.caja-aviso {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border: 2.5px solid #000000;
+  border-radius: 20px;
+  padding: 24px 30px;
+  width: 90%;
+  max-width: 380px;
+  box-shadow: 2px 2px 0px #000000;
+  z-index: 9999;
+  text-align: center;
+}
+
+.cuerpo-aviso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.icono-aviso {
+  font-size: 24px;
+}
+
+.texto-aviso {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.btn-cerrar-aviso {
+  background-color: #ffe600;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  border-radius: 14px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-cerrar-aviso:hover {
+  transform: scale(1.05);
+}
+
+/* Adaptación para dispositivos móviles */
+@media (max-width: 900px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .form-section {
+    width: 100%;
+  }
+}

@@ -1,0 +1,19 @@
+services:
+
+  apache:
+    image: php:8.3-apache
+    container_name: apachePHP
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www/html
+      - sqlite:/var/lib/cna
+    command:
+      - /bin/sh
+      - -c
+      - |
+        chown -R www-data:www-data /var/lib/cna
+        chmod 750 /var/lib/cna
+        exec apache2-foreground
+volumes:
+  sqlite:
